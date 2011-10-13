@@ -1,0 +1,75 @@
+OPL C++ Congkak Project
+
+http://phobos.ramapo.edu/majors/comp_sci/courses/current/opl/congkak/problem.html
+
+The Objective
+
+Congkak is a board game for two players. The players score points by playing their seeds. When the tournament ends, the player with the most seeds wins.
+The Players
+
+Two players play this game - one player will be the human user of your program, and the other player will be your program/computer. The two players will play a "tournament", consisting of one or more rounds. Each round will consist of the two players playing the game till one of them wins.
+The Setup
+
+The board: The board is made up of two rows of seven "playing pits" each (See PP in table). Each player has a "scoring pit" to the left side of the board
+
+For our purposes, the human player's pits are in the bottom row, and the computer player's pits are in the top row.
+A Round
+
+Setup:
+If this is the first round of the tournament, each player gets 7 seeds per playing pit.
+On subsequent rounds, each player arranges the seeds from the previous round as follows:
+If the player has 49 seeds or more, the player places 7 seeds each in her/his 7 playing pits, and the remaining seeds in her/his scoring pit.
+If the player has fewer than 49 seeds, the player places the seeds so that the most number of pits have 7 seeds, starting with the playing pit immediately next to the player's scoring pit. The remaining seeds are distributed to minimize the number of empty pits.
+First Player:
+On the first round of the tournament, a coin is tossed and the human player is asked to call head or tail. If the human player calls the coin toss correctly, the human player plays the first turn. Otherwise, the computer player plays the first turn.
+On subsequent rounds, the winner of the previous round plays first.
+Thereafter, the two players alternate.
+Turn: On his/her turn, the player picks up all of the seeds from any one of the playing pits on his/her side. Moving clockwise and starting from the next pit, the player "sows" the seeds one at a time in successive pits until the seeds run out. Sowing skips the opponent's store, but does not skip a player's own store.
+If the last seed is sown in the player's own scoring pit, the player gets an immediate free turn. The player can begin the turn at any one of the player's seven playing pits.
+If the last seed is sown in an empty playing pit, the turn ends.
+If the empty playing pit is on own side, the last seed, plus all the seeds in the opponent's pit across from the last pit are removed and added to player's storage pit.
+If the last seed is sown into an occupied pit, the player removes all the seeds from that pit, and sows them clock-wise starting from the next pit. The process continues until the last seed is sown into an empty pit.
+Objective: The objective for each player is to add as many seeds as possible to his/her scoring pit.
+End of Round: The round ends when a player has no seeds in any of his/her playing pits. The first player to have no seeds to play loses the round. The other player adds the remaining seeds on her/his side to his/her scoring pit.
+The Tournament
+
+After each round, your program should ask the user whether she/he wants to play another round.
+If yes, it should play another round as described above, announce the winner of the round, and repeat.
+If no, it should announce the winner of the tournament as the player with the most number of seeds, and exit.
+Strategy
+
+On every play, the player must determine the pit from which to pick up the seeds and start sowing. This can be influenced by several factors:
+Ability to continue sowing - planning so that the last seed is sown in one's own scoring pit, or into a non-empty playing pit.
+Ability to score - planning so that the last seed is sown in one's own empty playing pit which is across from a pit in which the opponent has the most number of seeds that can be captured.
+Preventing the opponent from capturing seeds.
+
+Implementation
+
+User Interface: You must provide a user-friendly interface for the game. For C++, LISP and Prolog, ASCII graphics and command-line input are sufficient.
+Your implementation must display the board, the pits and the number of seeds in each pit in a manner that is easy to comprehend.
+All human inputs must be validated.
+Ability to refer to individual pits in the board must be simplified.
+The turn played by the computer must be explained in text, e.g., (assuming computer's pits are named A-G and human's pits are named P-V clock-wise)
+The computer picked 6 seeds from pit D and placed them in pits D, E, F, G, its scoring pit, and pit P.
+Pit P contained 2 seeds.
+So, computer picked 3 seeds from pit P and placed them in pits P, Q, R.
+Pit R contained 0 seeds.
+So, the turn ended.
+Playing to Win: The computer must play to win.:
+First, it must generate all possible plays for the current board.
+Then, it must pick the "best" play. It must use at least two non-trivial strategies. See Strategy section for some possible stragtegies. If in doubt about whether a strategy you design is non-trivial, run it by me before you implement it.
+It should "explain" any strategy it used to play its turn, as in:
+This pit was selected to capture opponent's seeds in pit P.
+Help Mode: When the human player is playing, the computer must provide a help mode:
+If the human player asks for a recommendation, the computer must display all possible next plays for the human player at that point, and suggest the best next play for the human based on at least two non-trivial strategies. The computer must use its own playing strategy to come up with this recommendation.
+Serialization: The user should be able to suspend the game after any play, and resume at a later time from where the game was left off. In order to do this:
+Provide the option to serialize after each turn in the game.
+When the serialization option is exercised, your program will save the current state of the game into a file and quit. We will use text format for the file instead of XML, SOAP or binary format traditionally used. 
+The text format for Java/C++ will be as follows:
+Human Player: 0 7 7 7 7 7 7 7 2
+Computer Player: 0 7 7 7 7 7 7 7 3
+Next Player: Human 
+In the above format, human player currently has 0 seeds in the scoring pit, and 7 seeds in each playing pit. Human player has won two rounds so far in the tournament. Computer player currently has 0 seeds in the scoring pit, and 7 seeds in each playing pit. Computer player has won 3 rounds so far in the tournament. It is the human player's turn to play next.
+When your program is started, it will provide the option to resume a game from a previously saved state. If yes, it will ask for the name of the text file from which to read the current state of the game, and resume playing from there onwards.
+Generalization: The size of the board must be a parameter that can be set. The size can be 5-11 pits on each side. The number of seeds in each playing pit at the start of the tournament will be the same as the number of playing pits on each side, e.g., if the board is set up with 9 playing pits on each side, 9 seeds are placed in each playing pit at the start of the tournament.
+Using any part of code available in textbooks or on the web is unacceptable.
