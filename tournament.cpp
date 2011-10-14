@@ -11,6 +11,36 @@ tournament::tournament()
     this->setRounds(0);
 }
 
+~tournament::tournament()
+{
+    //Trash Collection
+    //destroy the tournament
+}
+
+//void tournament::setCurrRound()
+//{
+//    this->m_curr_round = 1;
+//}
+
+void tournament::setCurrRound(int a_curr_round)
+{
+    //force all negative entries to be set to 1
+    if (a_curr_rount <= 1) {
+        this->setCurrRound();
+    } else {
+        this->m_curr_round = a_curr_round;
+    }
+}
+
+int tournament::getRounds()
+{
+    if (this->m_curr_round == NULL) {
+        this->setCurrRound();
+    }
+    
+    return this->m_curr_round;
+}
+
 //basePlayer::basePlayer()
 //{
 //    basePlayer::setName("");
