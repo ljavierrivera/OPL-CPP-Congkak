@@ -16,13 +16,20 @@ public:
     tournament();
     ~tournament();
     
-    tournament(int a_rounds);
+    tournament(int a_num_rounds);
     
+    void setRounds(int a_num_rounds);
+    int getRounds();
+   
 protected:
     void queryPlayers();
     void nextRound(); 
 private:
-    int m_rounds;
+    int m_num_rounds;
+    int m_curr_round;
+    
+    void setCurrRound(int a_curr_round);
+    int getCurrRound();
 };
 
 
