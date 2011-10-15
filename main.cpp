@@ -21,9 +21,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
     tournament *t = new tournament();
-    cout << "Start: " << t->getRoundsPlayed() << endl;
-    //t.nextRound();
-    cout << "current: " << t->getRoundsPlayed();
+    t->runTournament();
     delete t;
     
 //    vector<int> justavector(5);

@@ -17,6 +17,7 @@ public:
     ~tournament();
     
     int getRoundsPlayed();
+    void runTournament();
    
 protected:
     void queryPlayers();
@@ -29,6 +30,7 @@ private:
     void setCurrRound(int a_curr_round = 1);
     int getCurrRound(); 
     void setActiveRound(bool a_is_active_round);
+    
 };
 
 #endif	/* TOURNAMENT_H */
