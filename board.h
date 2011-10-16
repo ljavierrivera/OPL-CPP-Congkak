@@ -1,5 +1,4 @@
-n
-        /* 
+/* 
  * File:   board.h
  * Author: javier.rivera
  *
@@ -13,23 +12,45 @@ n
 #include <map>
 #include <vector>
 #include <utility>
-        
 
 using namespace std;
 
 class board
 {
 public:
+    static const unsigned short MIN_NUM_PITS = 5;
+    static const unsigned short DEF_NUM_PITS = 7;
+    static const unsigned short MAX_NUM_PITS = 11;
+    
     board();
     ~board();
     
     board(int a_num_pits);
+    
+
+    
+    void initBoard();
+    void initBoard(int a_num_pits);
+    
+    int getNumPits();
+    //void setNumPits(int a_num_pits);
+    
+    map<string, int> getPitGroup();
+    //void setPitGroup(map<)
+    
+    
+    
+    
+    
 protected:
 private:
-    int m_num_pits
-    map<string, int> m_player_1;
-    map<string, int> m_player_2;
-    vector<map> m_pits;
+    int m_num_pits;
+    vector<short int> m_pit_group1;
+    vector<short int> m_pit_group2;
+    //vector< vector <short int> > m_pits;
+    
+    //void initPits();
+    void initPits(int a_num_pits = DEF_NUM_PITS);    
     
 };
 
