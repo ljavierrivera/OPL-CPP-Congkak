@@ -33,7 +33,7 @@ public:
     void initBoard(int a_num_pits);
     
     int getNumPits();
-    //void setNumPits(int a_num_pits);
+    bool setNumPits(int a_num_pits);
     
     map<string, int> getPitGroup();
     //void setPitGroup(map<)

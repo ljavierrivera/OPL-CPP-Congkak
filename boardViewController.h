@@ -20,21 +20,25 @@ using namespace std;
 class boardViewController
 {
 public:
-    //static const char 
+    static const <string> HORIZONTAL_BAR = "=";
+    static const <string> VERTICAL_BAR = "||";
+    static const int m_display_height = 17;
     
     boardViewController();
     ~boardViewController();
     
     void displayBoard();
-    void queryNumPits();
+    
     
 protected:
 private:
     board m_board;
     map<string, int> m_pits_group1;
     map<string, int> m_pits_group2;
+    int m_display_width;
     
     void initBoardView();
+    void queryNumPits();
 };
 
 

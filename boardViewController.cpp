@@ -19,7 +19,7 @@ boardViewController::~boardViewController()
 
 void boardViewController::initBoardView()
 {
-    //init
+    queryNumPits();
 }
 
 void boardViewController::queryNumPits()
@@ -35,13 +35,20 @@ void boardViewController::queryNumPits()
         cin >> i_num_pits;
         cout << endl;
         
-        if (i_num_pits >  board::MIN_NUM_PITS && i_num_pits <= board::MAX_NUM_PITS) {
+        //if (i_num_pits >  board::MIN_NUM_PITS && i_num_pits <= board::MAX_NUM_PITS) {
+        if (m_board.setNumPits(i_num_pits)) {
             invalid_input = false;
-            system("CLS");
+            //system("CLS");
             cout << "OK: Board will have " << i_num_pits << " pits per player!" << endl;
         } else {
             cout << "ERROR: Invalid Input (Outside of Range): Must be between " << board::MIN_NUM_PITS
                     << " and " << board::MAX_NUM_PITS << endl;
+            invalid_input = true;
         }
-    } while (invalid_input);
+    } while (invalid_input);   
+}
+
+void boardViewController::displayBoard()
+{
+    
 }
