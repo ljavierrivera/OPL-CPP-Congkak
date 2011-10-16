@@ -20,10 +20,21 @@ using namespace std;
 class boardViewController
 {
 public:
+    //static const char 
+    
+    boardViewController();
+    ~boardViewController();
+    
+    void displayBoard();
+    void queryNumPits();
+    
 protected:
 private:
+    board m_board;
     map<string, int> m_pits_group1;
     map<string, int> m_pits_group2;
+    
+    void initBoardView();
 };
 
 

@@ -11,6 +11,7 @@
 
 #include "basePlayer.h"
 #include "tournament.h"
+#include "boardViewController.h"
 
 
 using namespace std;
@@ -20,9 +21,13 @@ using namespace std;
  */
 int main(int argc, char** argv)
 {
-    tournament *t = new tournament();
-    t->runTournament();
-    delete t;
+    boardViewController *bvc = new boardViewController();
+    bvc->queryNumPits();
+    delete bvc;
+    
+    // *t = new tournament();
+    //t->runTournament();
+    //delete t;
     
 //    vector<int> justavector(5);
 //    justavector.push_back(42);
