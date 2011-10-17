@@ -4,8 +4,10 @@
 #include "board.h"
 #include "boardViewController.h"
 
-
 using namespace std;
+
+const string boardViewController::HORIZONTAL_BAR = "=";
+const string boardViewController::VERTICAL_BAR = "|";
 
 boardViewController::boardViewController()
 {
@@ -50,5 +52,7 @@ void boardViewController::queryNumPits()
 
 void boardViewController::displayBoard()
 {
-    
+    for (int i = 0; i < m_display_height; i++) {
+        //print
+    }
 }

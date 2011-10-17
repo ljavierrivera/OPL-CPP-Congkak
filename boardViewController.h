@@ -20,8 +20,8 @@ using namespace std;
 class boardViewController
 {
 public:
-    static const <string> HORIZONTAL_BAR = "=";
-    static const <string> VERTICAL_BAR = "||";
+    static const string HORIZONTAL_BAR;
+    static const string VERTICAL_BAR;
     static const int m_display_height = 17;
     
     boardViewController();

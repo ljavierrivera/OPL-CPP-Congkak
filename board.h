@@ -45,8 +45,8 @@ public:
 protected:
 private:
     int m_num_pits;
-    vector<short int> m_pit_group1;
-    vector<short int> m_pit_group2;
+    vector< vector<short int> > m_pit_group1;
+    vector< vector<short int> > m_pit_group2;
     //vector< vector <short int> > m_pits;
     
     //void initPits();
