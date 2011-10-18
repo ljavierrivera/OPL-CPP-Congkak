@@ -39,6 +39,7 @@ private:
     
     void initBoardView();
     void queryNumPits();
+    void displayBorderRow(string a_symbol, int a_repeat);
 };
 
 

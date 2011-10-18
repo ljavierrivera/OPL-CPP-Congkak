@@ -35,7 +35,7 @@ public:
     int getNumPits();
     bool setNumPits(int a_num_pits);
     
-    map<string, int> getPitGroup();
+    short int getPitCell(int a_x, int a_y, int a_pit_group = 1);
     //void setPitGroup(map<)
     
     
@@ -50,7 +50,9 @@ private:
     //vector< vector <short int> > m_pits;
     
     //void initPits();
-    void initPits(int a_num_pits = DEF_NUM_PITS);    
+    void initPits(int a_num_pits = DEF_NUM_PITS);
+    bool resizeBoard();
+    bool checkNumPitsRange(int a_num_pits);
     
 };
 

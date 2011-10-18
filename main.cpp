@@ -22,7 +22,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
     boardViewController *bvc = new boardViewController();
-    //bvc->queryNumPits();
+    bvc->displayBoard();
     delete bvc;
     
     // *t = new tournament();

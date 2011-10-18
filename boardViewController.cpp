@@ -52,7 +52,16 @@ void boardViewController::queryNumPits()
 
 void boardViewController::displayBoard()
 {
-    for (int i = 0; i < m_display_height; i++) {
-        //print
-    }
+   int ii, jj;
+   
+   for(ii=1; ii <= m_board.getNumPits(); ii++) {
+      for(jj=0; jj < 2; jj++) {
+         cout << "[" << ii << "][" << jj << "]" << m_board.getPitCell(ii, jj) << endl;
+      }
+   }
+}
+
+void boardViewController::displayBorderRow(string a_symbol, int a_repeat)
+{
+    //
 }
