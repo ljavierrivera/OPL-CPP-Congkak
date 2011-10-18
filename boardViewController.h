@@ -22,7 +22,10 @@ class boardViewController
 public:
     static const string HORIZONTAL_BAR;
     static const string VERTICAL_BAR;
-    static const int m_display_height = 17;
+    static const int m_display_height = 13;
+    static const int m_display_pit_width = 7;
+    static const int m_display_pit_height = 5;
+    static const int m_display_pit_border = 2;
     
     boardViewController();
     ~boardViewController();
@@ -33,15 +36,19 @@ public:
 protected:
 private:
     board m_board;
-    map<string, int> m_pits_group1;
-    map<string, int> m_pits_group2;
     int m_display_width;
     
     void initBoardView();
     void queryNumPits();
-    void displayBorderRow(string a_symbol, int a_repeat);
+    void displayPit();
 };
 
+void displayChars(string a_symbol, int a_repeat, bool a_new_line=false);
+void displayScoringPitTitle(int a_player);
+void displayPlayerPitTitle(int a_player, int a_pit);
+void displayBlankPitLine();
+void displayPlayerPitInfo(int a_row);
+void displayLeadingZero(int a_num, int a_num_digits);
 
 
 #endif	/* BOARDVIEWCONTROLLER_H */

@@ -26,32 +26,23 @@ void board::initPits(int a_num_pits)
 {
     m_num_pits = a_num_pits;
     //adds an additional pit. Pit[0] will be the scoring pit
-    m_pit_group1.assign(m_num_pits+1, vector<short int>(2,0));
-    m_pit_group2.assign(m_num_pits+1, vector<short int>(2,0));
+    m_pit_group1.assign(m_num_pits+1, 0);
+    m_pit_group2.assign(m_num_pits+1, 0);
 }
 
-short int board::getPitCell(int a_x, int a_y, int a_pit_group)
+int board::getPitCell(int a_x, int a_pit_group)
 {
-    vector< vector<short int> > *temp_pit_group;
-    int temp_size = 0;    
-    if (a_pit_group == 1) {
-        temp_pit_group = &m_pit_group1;
-    } else {
-        temp_pit_group = &m_pit_group2;
-    }
-    temp_size = temp_pit_group->size();
+    vector<int> *temp_pit_group;
     
-    //error checking. forcing invalid values to default to the first cell
-    if (a_x < 1 || a_x > temp_pit_group->size()) {
-        a_x = 1;
+    if (checkPitCell(a_x)) {
+        if (a_pit_group == 1) {
+            temp_pit_group = &m_pit_group1;
+        } else {
+            temp_pit_group = &m_pit_group2;
+        }
+        
+        return temp_pit_group->at(a_x);
     }
-    
-    if (a_y < 0 || a_y > temp_pit_group->front().size()) {
-        a_y = 0;
-    }
-
-    //will return default of [1][0]
-    return temp_pit_group->at(a_x).at(a_y);//[a_y];
 }
 
 int board::getNumPits()
@@ -80,12 +71,13 @@ bool board::resizeBoard()
             
             if (m_num_pits > prev_size) {
                 for (int ii = prev_size; ii <= m_num_pits; ii++) {
-                    m_pit_group1[ii].assign(2,0);
-                    m_pit_group2[ii].assign(2,0);
+                    m_pit_group1[ii] = 0;
+                    m_pit_group2[ii] = 0;
                 }
             }
+
+            return true;
         }
-        return true;
     }
     
     return false;
@@ -94,6 +86,15 @@ bool board::resizeBoard()
 bool board::checkNumPitsRange(int a_num_pits)
 {
     if (a_num_pits < MIN_NUM_PITS || a_num_pits > MAX_NUM_PITS) {
+        return false;
+    }
+    
+    return true;
+}
+
+bool board::checkPitCell(int a_x)
+{
+    if (a_x < 0 || a_x > m_num_pits) {
         return false;
     }
     

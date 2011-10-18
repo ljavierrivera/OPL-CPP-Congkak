@@ -35,8 +35,8 @@ public:
     int getNumPits();
     bool setNumPits(int a_num_pits);
     
-    short int getPitCell(int a_x, int a_y, int a_pit_group = 1);
-    //void setPitGroup(map<)
+    int getPitCell(int a_x, int a_pit_group = 1);
+    bool checkPitCell(int a_x);
     
     
     
@@ -45,8 +45,8 @@ public:
 protected:
 private:
     int m_num_pits;
-    vector< vector<short int> > m_pit_group1;
-    vector< vector<short int> > m_pit_group2;
+    vector<int> m_pit_group1;
+    vector<int> m_pit_group2;
     //vector< vector <short int> > m_pits;
     
     //void initPits();
