@@ -27,8 +27,6 @@ public:
     
     board(int a_num_pits);
     
-
-    
     void initBoard();
     void initBoard(int a_num_pits);
     
@@ -37,6 +35,11 @@ public:
     
     int getPitCell(int a_x, int a_pit_group = 1);
     bool checkPitCell(int a_x);
+    bool setPitCell(int a_x, int a_seeds, int a_pit_group = 1);
+    
+    bool initSeeds();
+    
+    bool moveSeeds(int a_x, int a_pit_group = 1);
     
     
     

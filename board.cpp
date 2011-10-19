@@ -9,7 +9,8 @@ const unsigned short board::MAX_NUM_PITS;
 
 board::board()
 {
-    initPits();   
+    initPits(); 
+    initSeeds();
 }
 
 board::~board()
@@ -99,4 +100,58 @@ bool board::checkPitCell(int a_x)
     }
     
     return true;
+}
+
+bool board::initSeeds() {
+    for (int i = 1; i <= m_num_pits; i++) {
+        m_pit_group1[i] = 7;
+        m_pit_group2[i] = 7;
+        
+    }
+}
+
+bool board::setPitCell(int a_x, int a_seeds, int a_pit_group) {
+    vector<int> *temp_pit_group;
+    
+    if (a_pit_group == 1) {
+        temp_pit_group = &m_pit_group1;
+    } else {
+        temp_pit_group = &m_pit_group2;
+    }
+    temp_pit_group->at(a_x) = a_seeds;
+}
+
+bool board::moveSeeds(int a_x, int a_pit_group) {
+    int seeds = getPitCell(a_x, a_pit_group),
+            pits_to_sow = seeds,
+            pits_per_board = (m_num_pits * 2) + 1,
+            seeds_per_pit = 1, seeds_balance = 0;
+    vector<int> *temp_player_pits = &m_pit_group1, 
+            *temp_opponent_pits = &m_pit_group2,
+            *current_pits;
+    vector<int>::iterator curr_pos, next_pos;
+    
+    if (a_pit_group != 1) {
+        temp_player_pits = &m_pit_group2;
+        temp_opponent_pits = &m_pit_group1;
+    }
+    
+    if (seeds > pits_per_board) {
+        seeds_per_pit = seeds / pits_per_board;
+        seeds_balance = seeds % pits_per_board;
+        pits_to_sow = pits_per_board;
+    }
+    
+    current_pits = temp_player_pits;
+    curr_pos = current_pits->begin() + a_x;
+    
+    for (int xx = 1; xx <= pits_to_sow;) {
+        if (curr_pos == current_pits->end()) {
+            next_pos = current_pits->begin();
+            *next_pos += seeds_per_pit;
+        }
+        
+        curr_pos = next_pos;
+        xx++;
+    }
 }

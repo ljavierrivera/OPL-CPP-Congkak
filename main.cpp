@@ -21,11 +21,10 @@ using namespace std;
  */
 int main(int argc, char** argv)
 {
-    do {
+    
     boardViewController *bvc = new boardViewController();
     bvc->displayBoard();
     delete bvc;
-    } while (true);
     
     // *t = new tournament();
     //t->runTournament();

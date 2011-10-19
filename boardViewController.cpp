@@ -1,5 +1,6 @@
-#include <string>
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #include "board.h"
 #include "boardViewController.h"
@@ -28,13 +29,23 @@ void boardViewController::queryNumPits()
 {
     unsigned short i_num_pits = 0;
     bool invalid_input = true;
+    string input = "";
     
     do {
         cout << "Setting up pits; (MIN: " << board::MIN_NUM_PITS
                 << ", MAX: " << board::MAX_NUM_PITS << ")" << endl;
         cout << "Enter the Number of pits for this game [" 
                 << board::DEF_NUM_PITS << "]: ";
-        cin >> i_num_pits;
+        do {
+            getline(cin, input);
+            stringstream input_stream(input);
+            if (input_stream >> i_num_pits) {
+                break;
+            } else {
+                cout << "Invalid entry, please enter a number: ";
+            }
+        } while (true);
+        //cin >> i_num_pits;
         cout << endl;
         
         //if (i_num_pits >  board::MIN_NUM_PITS && i_num_pits <= board::MAX_NUM_PITS) {
