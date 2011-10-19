@@ -24,6 +24,10 @@ int main(int argc, char** argv)
     
     boardViewController *bvc = new boardViewController();
     bvc->displayBoard();
+    do {
+    bvc->queryPitToSow();
+    bvc->displayBoard();
+    } while(true);
     delete bvc;
     
     // *t = new tournament();

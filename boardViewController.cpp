@@ -61,6 +61,38 @@ void boardViewController::queryNumPits()
     } while (invalid_input);   
 }
 
+void boardViewController::queryPitToSow()
+{
+    unsigned short i_num_pits = 0;
+    bool invalid_input = true;
+    string input = "";
+    
+    do {
+        cout << "Sowing Phase: " << endl;
+        cout << "Please select a pit (1 - " << m_board.getNumPits() 
+                << ") to start sowing: ";
+        do {
+            getline(cin, input);
+            stringstream input_stream(input);
+            if (input_stream >> i_num_pits) {
+                break;
+            } else {
+                cout << "Invalid entry, please enter a number: ";
+            }
+        } while (true);
+        cout << endl;
+        
+        if (m_board.moveSeeds(i_num_pits)) {
+            invalid_input = false;
+            cout << "Sowing from pit: " << i_num_pits << endl;
+        } else {
+            cout << "ERROR: Invalid Input (Outside of Range): Must be between 1 and " 
+                    << m_board.getNumPits() << endl;
+            invalid_input = true;
+        }
+    } while (invalid_input);
+}
+
 void boardViewController::displayBoard()
 {
     int p, pp, po, val;
@@ -126,7 +158,7 @@ void boardViewController::displayBoard()
                } else {
                    po = pp;
                }
-               val = m_board.getPitCell(po, 1);
+               val = m_board.getPitCell(po, p);
                displayLeadingZero(val, 3);
                cout << "  " << VERTICAL_BAR;
            }

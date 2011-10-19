@@ -31,6 +31,8 @@ public:
     ~boardViewController();
     
     void displayBoard();
+    void queryNumPits();
+    void queryPitToSow();
     
     
 protected:
@@ -39,7 +41,6 @@ private:
     int m_display_width;
     
     void initBoardView();
-    void queryNumPits();
     void displayPit();
 };
 
